@@ -1,0 +1,42 @@
+html, body, footer {
+    display: block;
+}
+
+html {
+    overflow: hidden;
+    background-color: black;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+img {
+    border-width: 0;
+}
+
+img.link {
+    position: fixed;
+    top: calc(50% - 384px);
+    left: calc(50% - 512px);
+}
+
+a {
+    color: gray;
+    text-decoration: none;
+}
+
+footer {
+    height: 30px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.5em;
+    color: gray;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding-top: 10px;
+    background-color: transparent;
+}
