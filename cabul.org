@@ -2,21 +2,237 @@ CABUL.ORG - "Cábula" is the Portuguese word for cheatsheet. "Kabul" is a town i
 By: lab.rasparta.org.
 On the www at http://cabul.lab.rasparta.org.
 
-* cabul.org
-A line starting with "* " starts a subject. Just like the one above.
-A line starting with "** " is a second level subject. Just like the next one.
-If you are using org-mode (you really should) put the mark (the cursor) on the same line as any of the subjects and press tab to unfold.
-When done with it, press tab again to fold it back.
+* Command line (various commands)
+  "Type cat /boot/vmlinuz > /dev/audio to hear the Voice of God."
 
-** How do I start?
-Just edit the file and make it your own.
-Don't forget to read the README and the TODO files to set up everything nicely.
-You can, now, start by just deleting all of this.
-Remember: its only a specially formatted text file.
+** Before anything else!
+man [<section>] <command|file|...>
+   Shows you the manual page for the command, configuration file...
+   Manual pages are organized into sections, each section covers a topic. You can omit its indication.
+   Man sections are:
+   Section 1 - user commands (introduction) 
+   Section 2 - system calls (introduction) 
+   Section 3 - library functions (introduction) 
+   Section 4 - special files (introduction) 
+   Section 5 - file formats (introduction) 
+   Section 6 - games (introduction) 
+   Section 7 - conventions and miscellany (introduction) 
+   Section 8 - administration and privileged commands (introduction) 
+   There may be others...
 
-** How can I help?
-Send a pull request our way.
-;-)
+info <command>
+   Another, more interactive, help system.
+
+** filesystem manipulation
+pwd
+   Where am I?
+
+cd <directory>
+   Change to <directory>.
+
+ls
+   List contents.
+
+touch <file>
+   Creates <file>.
+
+mkdir <directory>
+   Creates <directory>.
+
+rm <file>
+   Removes <file>.
+
+rmdir <directory>
+   Removes empty <directory>. If <directory is not empty, use rm -fr <directory>. Be careful!
+
+cp <origin> <destination>
+   Copies from <origin> to <destination>.
+
+cat <file>
+   Prints the contents of <file> to the screen.
+
+chmod <mode> <file>
+   Changes the permissions of <file> as entered in <mode>.
+
+echo <expression>
+   Prints <expression> to the screen.
+
+
+* bash - the default "shell" in most systems
+  “Anyone who attempts to generate random numbers by deterministic means is, of course, living in a state of sin.”
+  John von Neumann
+
+** Version
+bash --version
+   Prints bash version.
+
+** Command line manipulation
+Up (up arrow)
+   Previous command in history.
+
+Down (down arrow)
+   Next command in history.
+
+C-u
+   Deletes to the start of the line.
+
+C-k
+   Deletes to the end of the line.
+
+C-y
+   Paste.
+
+M-y
+   Cycles through cuted text.
+
+M-.
+   Cycles through previous last arguments.
+
+** Filters and redirection
+<command1> | <command2>
+   Pipes the output of <command1> through <command2>.
+
+<command> > <file>
+   Redirects the output (stdout) of <command> to <file> overwriting the contents of an existing <file> or creating it if nonexistent.
+
+<command> >> <file>
+   Redirects the output (stdout) of <command> to <file> appending it to the end of existing content.
+
+<command1> < <command2>
+   Use as input (stdin) of <command1> the output of <command2>.
+
+<command> << <terminator>
+   Use whatever is entered in stdin as input of <command> until <terminator> is reached.
+
+<command> 1>
+   Redirects stdin.
+
+<command> 2>
+   Redirects stdout.
+
+<command> >&
+   Redirects both (stdin and stdout).
+
+** Tests
+info test
+   Help on tests.
+
+<string> = <string>
+   String comparison - equal strings?
+
+<string> != <string>
+   String comparison - different strings?
+
+-n <string>
+   "String" is not empty?
+
+-z <string>
+   "String" is empty?
+
+<integer1> -eq <integer2>
+   Is integer 1 equal to integer2?
+
+<integer1> -ne <integer2>
+   Are they different?
+
+<integer1> -lt <integer2>
+   Is <integer1> lesser than <integer2>?
+
+<integer1> -le <integer2>
+   Is it lesser or equal to <integer2>?
+
+<integer1> -gt <integer2>
+   Is it greater?
+
+<integer1> -ge <integer2>
+   Is it greater or equal?
+
+-f <file>
+   <file> exists?
+
+-d <directory>
+   <directory> exists?
+
+** Cycles
+for <element> in <list>; do <commands>; done
+
+while [ <condition> ]; do <commands>; done
+
+until [ <condition> ]; do <commands>; done
+
+case <expression> in <case1>) <command-list>;; ... ;; caseN) <command-list>;; esac
+
+if [ <expression> ]; then <commands>; elif [ <expression> ]; then <commands>; else <commands>; fi
+
+
+* Emacs
+  “The first five years of emacs are the worst; after that, it's just difficult.”
+  Bill Venables
+
+** Help
+C-h
+   Help system.
+
+C-h t
+   Tutorial.
+
+C-h i
+   Info.
+
+C-h k
+   Keys help.
+
+C-h a
+   Apropos.
+
+C-h m
+   About the mode.
+
+** Files
+C-x C-f
+   Visits (opens) a file for editing.
+
+C-x C-s
+   Saves the file.
+
+C-x s
+   Saves multiple files.
+
+C-x i
+   Insert the content of another file.
+
+C-x C-w
+   Saves as...
+
+C-x k
+   Kills (closes) an visited file.
+
+M-x revert-buffer
+   Reverts to the saved content.
+
+** Windows
+C-x 0
+   Closes current window.
+
+C-x 1
+   Closes all but current window.
+
+C-x 2
+   Splits the screen horizontally.
+
+C-x 3
+   Splits the screen vertically.
+
+C-x o
+   Switches to the next window.
+
+
+* OpenSSH - secure remote login
+  "Secure login across the Wild Wild Web."
+  Form the OpenSSH T-Shirt
+
+ssh -p<port> <user>@<host>
+  login into <host>, using <port>, as <user>.
 
 
 * License
